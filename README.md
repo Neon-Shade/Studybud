@@ -23,6 +23,7 @@ This project was built as part of a comprehensive 7-hour video tutorial: [Watch 
 </p>
 <img src="https://user-images.githubusercontent.com/72341453/134747155-3ca5b55f-b064-4741-aeae-abe90bddf41e.PNG">  
 </td>
+</tr>
 </table>
 
 ## Setup Instructions
@@ -32,34 +33,3 @@ This project was built as part of a comprehensive 7-hour video tutorial: [Watch 
 ```bash
 git clone https://github.com/divanov11/StudyBud.git
 cd StudyBud
-```
-
-### 2. Create and activate a virtual environment
-
-```bash
-# Install virtualenv if you haven't already
-pip install virtualenv
-
-# Create a virtual environment
-virtualenv venv
-
-# Activate the virtual environment
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run the development server
-
-```bash
-python manage.py runserver
-```
-
-The application will be available at http://127.0.0.1:8000/
