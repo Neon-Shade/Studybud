@@ -8,3 +8,4 @@ urlpatterns = [
     path('rooms/', views.getRooms),
     path('rooms/<str:pk>/', views.getRoom),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
