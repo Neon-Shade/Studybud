@@ -1,28 +1,24 @@
-# # Python versiyasi
-# FROM python:3.12
-
-# # Ish papkasi
-# WORKDIR /app
-
-# # requirements.txt ni ko‘chiramiz
-# COPY requirements.txt .
-
-# # Kutubxonalarni o‘rnatamiz
-# RUN pip install -r requirements.txt
-
-# # Barcha fayllarni ko‘chiramiz
-# COPY . .
-
-# # Serverni ishga tushiramiz
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
 FROM python:3.11-slim
+
+# Muhit o'zgaruvchilari
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV PORT 8000
 
 WORKDIR /app
 
+# Kutubxonalarni o'rnatish
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Barcha fayllarni nusxalash
 COPY . .
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Statik fayllarni yig'ish
 RUN python manage.py collectstatic --noinput
-CMD ["gunicorn", "StudyBud.studybud.wsgi:application", "--bind", "0.0.0.0:10000"]
+
+# Portni ochish
+EXPOSE 8000
+
+# ISHGA TUSHIRISH (Bu qatorni diqqat bilan tekshiring)
+CMD ["gunicorn", "StudyBud.Studybud.wsgi:application", "--bind", "0.0.0.0:8000"]
