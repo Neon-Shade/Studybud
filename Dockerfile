@@ -1,0 +1,28 @@
+# # Python versiyasi
+# FROM python:3.12
+
+# # Ish papkasi
+# WORKDIR /app
+
+# # requirements.txt ni ko‘chiramiz
+# COPY requirements.txt .
+
+# # Kutubxonalarni o‘rnatamiz
+# RUN pip install -r requirements.txt
+
+# # Barcha fayllarni ko‘chiramiz
+# COPY . .
+
+# # Serverni ishga tushiramiz
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+CMD ["gunicorn", "projectname.wsgi:application", "--bind", "0.0.0.0:8000", "python", "manage.py", "runserver", "0.0.0.0:8000"]
