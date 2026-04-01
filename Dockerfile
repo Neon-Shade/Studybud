@@ -21,4 +21,4 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # ISHGA TUSHIRISH (Bu qatorni diqqat bilan tekshiring)
-CMD ["gunicorn", "StudyBud.Studybud.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--chdir", "StudyBud", "StudyBud.wsgi:application"]
